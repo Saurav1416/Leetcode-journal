@@ -30,18 +30,18 @@ public:
 
 
         int min = INT_MAX;
-        int maxx = 0;
+        
         int profit =0;
 
         for(int i =0 ;i< prices.size();i++){
 
             if( prices[i]<min){
                 min=prices[i];
-                maxx=0;
+                
 
-            }else if( prices[i]>maxx){
-                maxx = prices[i];
-                profit = max(profit,maxx-min);
+            }else {
+               
+                profit = max(profit,prices[i]-min);
             }
         }
         return profit ;
