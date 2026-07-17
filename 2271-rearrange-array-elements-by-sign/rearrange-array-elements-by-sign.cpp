@@ -11,10 +11,13 @@ public:
                a.push_back(nums[i]);
             else b.push_back(nums[i]);
         }
-        nums.clear();
-        for(int i =0 ;i<a.size();i++){
-            nums.push_back(a[i]);
-            nums.push_back(b[i]);
+         
+        for (int i =0;i< n ;i++){
+             if( i%2 ==0){
+                 nums[i]=a [i/2];
+             }else{
+                nums[i]= b[i/2];
+             }
         }
 
         return nums;
