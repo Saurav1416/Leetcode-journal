@@ -14,7 +14,7 @@ public:
 
      for (int i =0;i<s.size();i++){
 
-         if( um[s[i]]<um[s[i+1]]){
+         if(i+1<s.size() && um[s[i]]<um[s[i+1]]){
             ans+= um[s[i+1]]-um[s[i]];
             i++;
          }
