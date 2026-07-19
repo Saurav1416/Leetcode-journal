@@ -2,21 +2,16 @@ class Solution {
 public:
     string largestOddNumber(string num) {
         
-       string ans ="";
-       int max =-1;
-       bool counter=false;
+        int index=-1;
 
-     for( int i =num.size()-1;i>=0;i--){
-
-        if(num[i]%2 !=0){
-            counter= true;
+        for(int i = 0;i<num.size();i++){
+            if ( num[i]%2!=0)
+                index = i;
         }
-        if(counter){
-            ans+=num[i];
-        }
-     }
-     reverse(ans.begin(),ans.end());
-     return ans;
+        if ( index==-1)
+            return "";
 
-    }
+        return  num.substr(0,index+1);
+    }   
+
 };
