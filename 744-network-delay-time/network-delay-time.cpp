@@ -11,7 +11,11 @@ public:
         }
 
         vector<int>dist(n+1,INT_MAX);
-        priority_queue<pair<int,int>>pq;
+        priority_queue<
+    pair<int,int>,
+    vector<pair<int,int>>,
+    greater<pair<int,int>>
+> pq;
 
         dist[k]=0;
         pq.push({0,k});
