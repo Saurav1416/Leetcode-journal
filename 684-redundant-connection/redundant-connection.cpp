@@ -44,11 +44,9 @@ public:
             int y = i[1];
 
             if( nodeslist.unions(x,y)){
-                ans = {x,y};
+               return {x,y};
             }
         }
-        anss.push_back( ans.first);
-         anss.push_back( ans.second);
-         return anss;
+       return {-1,-1};
     }
 };
