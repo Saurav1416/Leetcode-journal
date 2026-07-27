@@ -22,20 +22,12 @@ public:
         
         unordered_map<int,bool>visited;
 
-        for( int i =0; i<isConnected.size();i++){
-            if( !visited[i]){
-                visited[i]= true;
-                for( int j =0;j<isConnected.size();j++){
-                if( isConnected[i][j] && !visited[j]){
-                    dfs( visited,j,isConnected);
-                }
-                
-            }
-                count++;
-            }
-            
-            
-        }
+        for (int i = 0; i < isConnected.size(); i++) {
+    if (!visited[i]) {
+        dfs(visited, i, isConnected);
+        count++;
+    }
+}
 
 return count;
         
