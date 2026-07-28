@@ -7,13 +7,13 @@ public:
             return ;
         }
 
-        if( left<n && left>= right ){
-            string x = st + '(';
-            solve( left+1,right, n ,ans, x);
+        if( left<n  ){
+            
+            solve( left+1,right, n ,ans, st+'(');
         }
         if( left>right){
-            string y = st+')';
-            solve( left, right+1, n ,ans, y);
+           
+            solve( left, right+1, n ,ans,st+')');
         }
     }
     vector<string> generateParenthesis(int n) {
