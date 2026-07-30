@@ -39,7 +39,7 @@ public:
     int makeConnected(int n, vector<vector<int>>& connections) {
         
         if ( connections.size()<n-1) return -1;
-        vector<int> temp(n,0 );
+        
 
         dsu D = dsu(n);
 
@@ -48,8 +48,7 @@ public:
 
                 if( D.findp(i[0])!= D.findp(i[1])){
                     D.unionn(i[0],i[1]);
-                    temp[i[0]]=1;
-                    temp[i[1]]=1;
+                   
                     
                 }
                 else{
