@@ -19,33 +19,28 @@ public:
 class Solution {
 public:
     Node* connect(Node* root) {
+
         if( !root) return root;
 
-        queue<Node * > st;
+        queue<Node* > q;
 
-        st.push(root);
-        st.push(nullptr);
+        q.push( root);
 
-        while( !st.empty()){
-            Node * a = st.front();
-            st.pop();
-            if( a ==nullptr && !st.empty()){
-                st.push(nullptr);
-                continue;
-            }else if( a ==nullptr && st.empty()){
-               continue;
+        while( !q.empty()){
+            int size = q.size();
+
+            for( int i =0;i< size;i++){
+
+                Node * a = q.front();
+                q.pop();
+                if( a->left) q.push( a->left);
+                if(a->right) q.push( a->right);
+                if( i ==size-1){ continue;}
+                a->next = q.front ();
+                
             }
-            
-            else {a->next = st.front();
-            if( a->left){
-                st.push(a->left);
-            }
-            
-            if( a->right){
-                st.push(a->right);
-            }}
+
         }
-
         return root;
         
     }
