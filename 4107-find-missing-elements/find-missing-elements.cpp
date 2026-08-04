@@ -2,28 +2,26 @@ class Solution {
 public:
     vector<int> findMissingElements(vector<int>& nums) {
 
-        int minn =INT_MAX;
-        int maxx = INT_MIN;
+        sort ( nums.begin(),nums.end());
 
-        unordered_map<int,int> um;
-
-        for( int i =0 ;i< nums.size();i++){
-
-            minn = min( nums[i], minn);
-            maxx = max( nums[i],maxx);
-
-            um[nums[i]]=1;
-        }
+        int minn = nums[0];
+        int maxx = nums[nums.size()-1];
 
         vector<int> ans;
-
-        for( int i = minn+1;i<maxx;i++){
-
-            if (um[i]==0){
-                ans.push_back( i);
-            }
+        int z =1;
+        int n = nums.size();
+        for( int i =minn+1;i<maxx;i++ ){
+        if( z>=n-1 || ( z <n && nums[z]!=i)){
+            ans.push_back(i);
+            if( nums[z]<i)
+            z++;
+        }else if( z<n && nums[z]==i){
+            z++;
         }
+        
 
+
+        }
         return ans;
         
     }
