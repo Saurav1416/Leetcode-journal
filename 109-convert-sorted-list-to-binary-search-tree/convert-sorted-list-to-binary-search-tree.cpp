@@ -27,9 +27,7 @@ public:
             return nullptr;
         }
 
-        if( start ->next==end ){
-           return start;
-        }
+        
         ListNode * slow = start;
        ListNode *  fast = start;
 
@@ -46,10 +44,7 @@ public:
         if ( !start  || start ==end){
             return nullptr;
         }
-        if(start && (start ->next ==end )){
-            TreeNode * startt =new TreeNode ( start->val);
-            return startt;
-        }
+        
 
         ListNode* a = findmid( start,end);
         
