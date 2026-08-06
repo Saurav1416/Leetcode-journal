@@ -10,16 +10,18 @@ public:
 
         for( int i =0;i<nums.size();i++){
 
-            if( nums[i]%2==1){
+            if( nums[i] &1 ){
 
                 no++;
                 
-                um[no] = { i,prev};
+                um[no] = { i,prev};   // store index of this and prev odd no 
                 prev =i;
             }
            
 
-            if( no>= k){
+            if( no>= k){     //whenever count is greater or equal to k what we need to do is 
+                             // just count gap bw  cnt -k  index and prev bcz remaining part 
+                             // is same
 
                 int a = no-k+1;
 
