@@ -4,14 +4,11 @@ public:
         int count;
         for( int i =0;i<matrix[0].size();i++){
 
-             count =0;
-            for( int j =node ;j>=0;j--){
-                if( matrix[j][i]=='0'){
-                   break;
-                }
-                 count++;
-            }
-            area[i]= count;
+             if( matrix[node][i]=='0'){
+                area[i]=0;
+                continue;
+             }
+             area[i]+=1;
         }
     }
     int solve( vector<vector<char>>& matrix,vector<int>& area ){
@@ -46,9 +43,9 @@ public:
     int maximalRectangle(vector<vector<char>>& matrix) {
 
         int ans =-1;
-
+         vector<int>area(matrix[0].size(),0);
         for( int i =0;i<matrix.size();i++){
-            vector<int>area(matrix[0].size(),0);
+           
             bar( matrix,area,i);
 
             ans = max( ans,solve(matrix,area));
