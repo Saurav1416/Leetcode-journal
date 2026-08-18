@@ -11,51 +11,44 @@
  */
 class Solution {
 public:
-    void inorder(TreeNode * root, vector<int> & ans){
+    void inorder(TreeNode* root,
+             TreeNode*& prev,
+             TreeNode*& curr,
+             TreeNode*& a,
+             TreeNode*& b){
         if( !root) return ;
 
-        inorder(root->left,ans);
-        ans.push_back(root->val);
-        inorder(root->right,ans);
-    }
-    TreeNode *  correct( TreeNode * root, int a, int b){
+        inorder( root->left,prev,curr, a,b);
 
-        if( !root) return nullptr;
-
-        if( root->val ==a){
-           return root;
+        curr = root;
+        if(a && curr->val< prev->val ){
+            b= curr;
         }
-       TreeNode * x = correct( root->left,a,b);
-       if( x) return x;
-        TreeNode * y = correct(root->right,a,b);
-        if( y ) return y;
-        return nullptr;
-
+        else if(curr->val<prev->val){
+            a = prev;
+            b = curr;
+        }
+        prev= root;
+        inorder( root->right,prev,curr,a,b);
+        
     }
+    
     void recoverTree(TreeNode* root) {
 
         vector<int>ans;
+        TreeNode * prev =new TreeNode(INT_MIN);
+        TreeNode * curr =new TreeNode(INT_MIN);TreeNode *a = nullptr;
+        TreeNode * b  ;
+        
 
-        inorder( root,ans);
-        int a = INT_MIN;
-        int b =INT_MIN;
 
-        for( int i =0 ;i<ans.size()-1;i++){
-            if( a!=INT_MIN && ans[i]>ans[i+1] ){
-                b= ans[i+1];
-            }
-            else if( ans[i]>ans[i+1]){
-                a= ans[i];
-                b = ans[i+1];
-            }
+        inorder( root,prev,curr,a,b);
+        int temp = a->val;
+        a->val = b->val;
+        b->val  =temp;
+        
 
-        }
-        TreeNode * x=correct( root, a,b);
-        TreeNode * y = correct(root,b,a);
-        int temp = x->val;
-        x->val = y->val;
-        y->val = temp;
-        return;
+      
         
     }
 };
