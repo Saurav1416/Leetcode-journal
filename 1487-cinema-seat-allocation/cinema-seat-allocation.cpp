@@ -19,16 +19,16 @@ public:
 
         int ans = ( n - res.size())*2;
 
-        for ( auto i : res){
+        for ( auto &[row, mask] : res){
 
-            bool left = !(1<<2&i.second || 1<<3&i.second 
-                            || 1<<4&i.second || 1<<5&i.second);
+              bool left  = !(mask & ((1 << 2) | (1 << 3) | 
+                                   (1 << 4) | (1 << 5)));
 
-            bool middle =!(1<<4&i.second ||1<<7&i.second 
-                            || 1<<6&i.second || 1<<5&i.second);
+            bool right = !(mask & ((1 << 6) | (1 << 7) | 
+                                   (1 << 8) | (1 << 9)));
 
-            bool right = !(1<<9&i.second || 1<<7&i.second 
-                            || 1<<6&i.second || 1<<8&i.second);
+            bool middle = !(mask & ((1 << 4) | (1 << 5) | 
+                                     (1 << 6) | (1 << 7)));
 
             if( left && right){
                 ans +=2;
