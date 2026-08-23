@@ -2,18 +2,33 @@ class Solution {
 public:
     int leastInterval(vector<char>& tasks, int n) {
         
-        int maxx =-1;
-        int count = 0;
+        
 
-        unordered_map<char,int> map;
-        for(auto i: tasks ){
-            map[i]++;
-            if( map[i]>maxx){
+        // unordered_map<char,int> map;
+        // for(auto i: tasks ){
+        //     map[i]++;
+        //     if( map[i]>maxx){
                 
-                maxx = map[i];
-                count =0;
-            }
-            if( map[i]==maxx){
+        //         maxx = map[i];
+        //         count =1;
+        //     }
+        //     else if( map[i]==maxx){
+        //         count++;
+        //     }
+        // }
+        int freq[26]={0};
+        for (const char c : tasks) {
+            freq[c - 'A']++;
+        }
+
+        // 2. Find max frequency and its count in fixed 26 iterations
+        int maxx = 0;
+        int count = 0;
+        for (int i = 0; i < 26; ++i) {
+            if (freq[i] > maxx) {
+                maxx = freq[i];
+                count = 1;
+            } else if (freq[i] == maxx) {
                 count++;
             }
         }
