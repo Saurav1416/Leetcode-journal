@@ -30,10 +30,7 @@ public:
 
         }
 
-        for( auto i: nums){
-            cout<<i;
-        }
-
+      
 
 
         int ans =n+1;
