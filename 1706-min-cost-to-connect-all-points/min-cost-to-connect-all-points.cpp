@@ -1,11 +1,6 @@
 class Solution {
 public:
-    int helper( int a,int b , vector<vector<int>>&points){
-
-        int x = abs(points[a][0]- points[b][0]);
-        int y = abs(points[a][1]- points[b][1]);
-        return x+y ;
-    }
+    
     // here ques asked for manhattan dist not euclidean so we dont need square,square root 
     int minCostConnectPoints(vector<vector<int>>& points) {
 
@@ -30,7 +25,7 @@ public:
             for(int i =1;i<n;i++){
 
                 if( !v[i]){
-                     int dist = helper(a.second, i,points);
+                     int dist = abs(points[a.second][0]- points[i][0])+abs(points[a.second][1]- points[i][1]);
                      pq.push( {dist,i});
                 }
             }
