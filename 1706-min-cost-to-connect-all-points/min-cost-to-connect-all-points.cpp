@@ -1,6 +1,6 @@
 class Solution {
 public:
-    
+    // clear from ques we have to use prims algo of minimum spanning tree
     // here ques asked for manhattan dist not euclidean so we dont need square,square root 
     int minCostConnectPoints(vector<vector<int>>& points) {
 
@@ -26,11 +26,14 @@ public:
 
                 if( !v[i]){
                      int dist = abs(points[a.second][0]- points[i][0])+abs(points[a.second][1]- points[i][1]);
+                     
                      pq.push( {dist,i});
                 }
             }
         }
         return ans;
-        
+
+
+       
     }
 };
